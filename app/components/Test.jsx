@@ -18,5 +18,8 @@ class Test extends React.Component {
     }
 }
 
+
+
+
 //导出组件
-export default Component1;
+export default Test;

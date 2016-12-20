@@ -9,6 +9,6 @@ import App from './App';
 
 
 ReactDom.render(
-    <Test />,
+    <App />,
     document.getElementById('content')
 );
