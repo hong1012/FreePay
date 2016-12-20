@@ -1,12 +1,13 @@
 //ES6
 import React from 'react';
+import './Test.less'
 
 class Test extends React.Component {
 
     render() {
         return (
-            <div className="App">
-                <div className="App-header">
+            <div className="Test">
+                <div className="header">
                     <h2>Welcome to Test组件</h2>
                 </div>
                 <p className="App-intro">

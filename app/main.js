@@ -12,3 +12,8 @@ ReactDom.render(
     <App />,
     document.getElementById('content')
 );
+
+ReactDom.render(
+    <Test />,
+    document.getElementById('content2')
+);
