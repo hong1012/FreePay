@@ -9,7 +9,9 @@ class Test extends React.Component {
 
         // 设置 initial state
         this.state = {
-            text: props.initialValue || 'placeholder'
+            text: props.initialValue || 'placeholder',
+            name:props.name,
+            show:'none'
         };
 
         // ES6 类中函数必须手动绑定
@@ -26,9 +28,19 @@ class Test extends React.Component {
         //alert(this.state.text);
     }
 
-
     handleClick(e){
-        alert(this.state.text);
+        this.setState({
+            name:this.state.name=='显示'?'隐藏':'显示',
+            show:this.state.name=='显示'?'block':'none'
+        });
+        //alert(this.state.text);
+    }
+
+    handleGet(e){
+        this.setState({
+
+        });
+
     }
 
     handleKeyDown(event) {
@@ -44,17 +56,20 @@ class Test extends React.Component {
             <div className="Test">
                 <div className="header">
                     <h2>Welcome to Test组件</h2>
+                    <div>
+                        Type something:
+                        <input onChange={this.handleChange} onKeyDown={this.handleKeyDown}
+                               value={this.state.text} />
+                        <button  onClick={this.handleClick}>{this.state.name}</button>
+                        <button  onClick={this.handleGet}>获取数据</button>
+                        <ul style={{'display':this.state.show}}>
+                            <li>深圳</li>
+                            <li>广州</li>
+                            <li>惠州</li>
+                        </ul>
+                    </div>
                 </div>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
 
-                </p>
-                <div>
-                    Type something:
-                    <input onChange={this.handleChange} onKeyDown={this.handleKeyDown}
-                           value={this.state.text} />
-                    <button  onClick={this.handleClick}>测试</button>
-                </div>
             </div>
         )
     }
@@ -64,7 +79,8 @@ Test.propTypes = {
     initialValue: React.PropTypes.string
 };
 Test.defaultProps = {
-    initialValue: 'hong default'
+    initialValue: 'hong default',
+    name:'测试按钮'
 };
 
 //导出组件

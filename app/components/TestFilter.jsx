@@ -57,7 +57,7 @@ var StudentScoreTable = React.createClass({
 
 var GenderFilter = React.createClass({
     genderChangeHandler: function () {
-        this.props.onGenderChange(this.refs.genderFilter.getDOMNode().value);
+        this.props.onGenderChange(this.refs.genderFilter.value);
     },
     render: function () {
         return (

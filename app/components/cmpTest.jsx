@@ -2,6 +2,8 @@
 import React from 'react';
 import './cmpTest.less'
 
+import Test from './TestFilter2.jsx'
+
 /*无状态函数式组件*/
 function ListCcmp1(props, /* context */) {
     return <div>
@@ -29,7 +31,9 @@ var NotesList = React.createClass({
                     React.Children.map(this.props.children, function (child) {
                         return <li>{child}</li>;
                     })
+                    /*      <Test></Test>*/
                 }
+
             </ol>
         );
     }

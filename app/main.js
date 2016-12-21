@@ -17,8 +17,9 @@ ReactDom.render(
     document.getElementById('content')
 );*/
 
+
 ReactDom.render(
-    <Test  name="test"/>,
+    <Test  name="显示"/>,
     document.getElementById('content2')
 );
 
@@ -39,7 +40,8 @@ ReactDom.render(
 );
 
 
+/*
 ReactDom.render(
     <TestFilter  />,
     document.getElementById('content4')
-);
+);*/
