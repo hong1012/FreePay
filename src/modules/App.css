@@ -1,0 +1,28 @@
+.app{
+
+    display: flex;
+
+}
+
+.app .list {
+    background: green;
+    list-style: none;
+    display: inline-block;
+    width: 150px;
+}
+
+.app .list li{
+    padding: 10px;
+}
+
+
+.app .content{
+    flex: 1;
+    display: inline-block;
+
+    height: 800px;
+    background: greenyellow;
+    background: url(../assets/images/logo.png);
+
+}
+
