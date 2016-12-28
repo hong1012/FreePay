@@ -48,7 +48,7 @@ class Test extends React.Component {
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getData();
     }
 

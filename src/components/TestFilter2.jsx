@@ -3,13 +3,13 @@ import React from 'react';
 
 // 测试数据
 var _score = [
-    {name: '张三', gender: '男', chinese: 85, math: 98, _id:0},
-    {name: '张三', gender: '女', chinese: 95, math: 90, _id:1},
-    {name: '李四', gender: '男', chinese: 65, math: 48, _id:2},
-    {name: '大妹', gender: '女', chinese: 95, math: 100, _id:3},
-    {name: '王五', gender: '男', chinese: 75, math: 88, _id:4},
-    {name: '赵钱', gender: '男', chinese: 75, math: 98, _id:5},
-    {name: '二妹', gender: '女', chinese: 90, math: 98, _id:6}
+    {name: '张三', gender: '男', chinese: 85, math: 98, _id: 0},
+    {name: '张三', gender: '女', chinese: 95, math: 90, _id: 1},
+    {name: '李四', gender: '男', chinese: 65, math: 48, _id: 2},
+    {name: '大妹', gender: '女', chinese: 95, math: 100, _id: 3},
+    {name: '王五', gender: '男', chinese: 75, math: 88, _id: 4},
+    {name: '赵钱', gender: '男', chinese: 75, math: 98, _id: 5},
+    {name: '二妹', gender: '女', chinese: 90, math: 98, _id: 6}
 ];
 var StudentScoreTable,
     GenderFilter,
@@ -37,7 +37,7 @@ StudentScoreTable = React.createClass({
     },
     onDeleteScoreItem: function (id) {
         var data = this.state.data.map(function (item) {
-            if(item._id === id) {
+            if (item._id === id) {
                 item.deleteFlag = true;
             }
             return item;
@@ -52,12 +52,11 @@ StudentScoreTable = React.createClass({
             <div>
                 <GenderFilter genderFilter={this.state.genderFilter}/>
                 <NameFilter nameFilter={this.state.nameFilter}/>
-                <ScoreTable scoreNotes={this.state.data} />
+                <ScoreTable scoreNotes={this.state.data}/>
             </div>
         );
     }
 });
-
 
 
 GenderFilter = React.createClass({
@@ -66,7 +65,7 @@ GenderFilter = React.createClass({
         return null;
     },
     genderChangeHandler: function () {
-       // _StudentScoreTable.onGenderChange(this.refs.genderFilter.getDOMNode().value);
+        // _StudentScoreTable.onGenderChange(this.refs.genderFilter.getDOMNode().value);
         _StudentScoreTable.onGenderChange(this.refs.genderFilter.value);
     },
     render: function () {
@@ -91,7 +90,7 @@ NameFilter = React.createClass({
         return null;
     },
     nameChangeHandler: function () {
-       // _StudentScoreTable.onNameChange(this.refs.nameFilter.getDOMNode().value);
+        // _StudentScoreTable.onNameChange(this.refs.nameFilter.getDOMNode().value);
         _StudentScoreTable.onNameChange(this.refs.nameFilter.value);
     },
     render: function () {
@@ -99,7 +98,8 @@ NameFilter = React.createClass({
             <div className="condition-item">
                 <label>
                     <span>按姓名筛选</span>
-                    <input type="text" ref="nameFilter" onChange={this.nameChangeHandler} value={this.props.nameFilter}/>
+                    <input type="text" ref="nameFilter" onChange={this.nameChangeHandler}
+                           value={this.props.nameFilter}/>
                 </label>
             </div>
         );
@@ -118,7 +118,7 @@ ScoreTable = React.createClass({
             if (genderFilter !== 0 && nameFilter === '') {
                 // 仅genderfilter生效
                 if (GENDER[genderFilter] === scoreItem.gender) {
-                    !scoreItem.deleteFlag && scoreNotes.push(<ScoreItem key={scoreItem._id} score={scoreItem} />);
+                    !scoreItem.deleteFlag && scoreNotes.push(<ScoreItem key={scoreItem._id} score={scoreItem}/>);
                 }
                 return;
             }
@@ -126,7 +126,7 @@ ScoreTable = React.createClass({
             if (genderFilter === 0 && nameFilter !== '') {
                 // 仅nameFilter生效
                 if (scoreItem.name === nameFilter) {
-                    !scoreItem.deleteFlag && scoreNotes.push(<ScoreItem key={scoreItem._id}  score={scoreItem} />);
+                    !scoreItem.deleteFlag && scoreNotes.push(<ScoreItem key={scoreItem._id} score={scoreItem}/>);
                 }
                 return;
             }
@@ -134,13 +134,13 @@ ScoreTable = React.createClass({
             if (genderFilter !== 0 && nameFilter !== '') {
                 // 两个filter都生效
                 if (GENDER[genderFilter] === scoreItem.gender && scoreItem.name === nameFilter) {
-                    !scoreItem.deleteFlag && scoreNotes.push(<ScoreItem key={scoreItem._id}  score={scoreItem} />);
+                    !scoreItem.deleteFlag && scoreNotes.push(<ScoreItem key={scoreItem._id} score={scoreItem}/>);
                 }
                 return;
             }
 
 
-            !scoreItem.deleteFlag && scoreNotes.push(<ScoreItem key={scoreItem._id}  score={scoreItem} />);
+            !scoreItem.deleteFlag && scoreNotes.push(<ScoreItem key={scoreItem._id} score={scoreItem}/>);
         });
 
         return (
@@ -178,7 +178,8 @@ ScoreItem = React.createClass({
                 <td>{score.gender}</td>
                 <td>{score.chinese}</td>
                 <td>{score.math}</td>
-                <td><span className="trigger">修改</span><span className="trigger" onClick={this.deleteHandler}>删除</span></td>
+                <td><span className="trigger">修改</span><span className="trigger" onClick={this.deleteHandler}>删除</span>
+                </td>
             </tr>
         );
     }

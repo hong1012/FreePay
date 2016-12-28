@@ -11,20 +11,20 @@ function ListCcmp1(props, /* context */) {
         <p>无状态函数式组件</p>
         Hello list {props.name}
 
-        <input data-cmd="input" id="testinput" />
+        <input data-cmd="input" id="testinput"/>
         <p>{props.date.toTimeString()}</p>
 
         {
-/*            <button onClick={
-                document.getElementById('testinput').innerText='hhh'
+            /*            <button onClick={
+             document.getElementById('testinput').innerText='hhh'
 
-        }>测试按钮</button>*/
+             }>测试按钮</button>*/
         }
     </div>
 }
 /*es5原生方式React.createClass定义的组件*/
 var NotesList = React.createClass({
-    render: function() {
+    render: function () {
         return (
             <ol>
                 {
@@ -41,6 +41,6 @@ var NotesList = React.createClass({
 
 //导出组件
 export default {
-    list1:ListCcmp1,
-    list2:NotesList
+    list1: ListCcmp1,
+    list2: NotesList
 };

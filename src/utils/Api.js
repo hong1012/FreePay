@@ -13,7 +13,7 @@ function get(caller) {
     var xhr = new window.XMLHttpRequest();
     var url = caller.url || '';
     url = (url.indexOf('http') >= 0 ? url : baseUrl + url);
-    xhr.open('get',url , true);
+    xhr.open('get', url, true);
     xhr.onreadystatechange = function () {
         deal(xhr, caller);
     };
@@ -25,7 +25,7 @@ function post(caller) {
         var xhr = new window.XMLHttpRequest();
         var url = caller.url || '';
         url = (url.indexOf('http') >= 0 ? url : baseUrl + url);
-        xhr.open('post',url , true);
+        xhr.open('post', url, true);
         xhr.onreadystatechange = function () {
             deal(xhr, caller);
         };

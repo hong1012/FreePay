@@ -38,12 +38,12 @@ class Test extends React.Component {
 
     handleClick2(e) {
         /*
-        * "department": "",
+         * "department": "",
          "status": "",
          "others": "",
-        * */
+         * */
 
-        var param={
+        var param = {
             "startDate": "2016-01-01",
             "endDate": "2016-12-26",
             "type": 0,
@@ -55,7 +55,7 @@ class Test extends React.Component {
 
         Api.post({
             'url': 'doc/list?eid=4016572&appid=12345678&secret=8512f7fa',
-            'param':param,
+            'param': param,
             'fnSuccess': function (data) {
                 console.log(data);
             }
@@ -68,20 +68,17 @@ class Test extends React.Component {
         Api.get({
             'url': 'http://ebx.youshang.com/api/kis/bind?eid=4016572&appId=12345678',
             'fnSuccess': function (data) {
-               //alert(JSON.stringify(data));
+                //alert(JSON.stringify(data));
                 console.log(data);
             }
         });
 
         //eid, appid, secret
 
-       // {dbid: "4016572", appid: "12345678", secret: "8512f7fa", time: 1482752024000, appname: "kis"}
-
-
+        // {dbid: "4016572", appid: "12345678", secret: "8512f7fa", time: 1482752024000, appname: "kis"}
 
 
     }
-
 
 
     render() {

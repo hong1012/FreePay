@@ -1,4 +1,4 @@
-.app{
+.app {
 
     display: flex;
 
@@ -11,12 +11,11 @@
     width: 150px;
 }
 
-.app .list li{
+.app .list li {
     padding: 10px;
 }
 
-
-.app .content{
+.app .content {
     flex: 1;
     display: inline-block;
 

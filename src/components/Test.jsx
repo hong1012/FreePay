@@ -10,8 +10,8 @@ class Test extends React.Component {
         // 设置 initial state
         this.state = {
             text: props.initialValue || 'placeholder',
-            name:props.name,
-            show:'none'
+            name: props.name,
+            show: 'none'
         };
 
         // ES6 类中函数必须手动绑定
@@ -28,27 +28,25 @@ class Test extends React.Component {
         //alert(this.state.text);
     }
 
-    handleClick(e){
+    handleClick(e) {
         this.setState({
-            name:this.state.name=='显示'?'隐藏':'显示',
-            show:this.state.name=='显示'?'block':'none'
+            name: this.state.name == '显示' ? '隐藏' : '显示',
+            show: this.state.name == '显示' ? 'block' : 'none'
         });
         //alert(this.state.text);
     }
 
-    handleGet(e){
-        this.setState({
-
-        });
+    handleGet(e) {
+        this.setState({});
 
     }
 
     handleKeyDown(event) {
-      this.setState({
+        this.setState({
             text: event.target.value
         });
-       console.log('handleKeyDown');
-       //alert(this.state.text);
+        console.log('handleKeyDown');
+        //alert(this.state.text);
     }
 
     render() {
@@ -59,9 +57,9 @@ class Test extends React.Component {
                     <div>
                         Type something:
                         <input onChange={this.handleChange} onKeyDown={this.handleKeyDown}
-                               value={this.state.text} />
-                        <button  onClick={this.handleClick}>{this.state.name}</button>
-                        <button  onClick={this.handleGet}>获取数据</button>
+                               value={this.state.text}/>
+                        <button onClick={this.handleClick}>{this.state.name}</button>
+                        <button onClick={this.handleGet}>获取数据</button>
                         <ul style={{'display':this.state.show}}>
                             <li>深圳</li>
                             <li>广州</li>
@@ -80,7 +78,7 @@ Test.propTypes = {
 };
 Test.defaultProps = {
     initialValue: 'hong default',
-    name:'测试按钮'
+    name: '测试按钮'
 };
 
 //导出组件
