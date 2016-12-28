@@ -1,11 +1,15 @@
 import React from 'react'
 
-import {Button} from 'antd'
-import {Input, Table, DatePicker} from 'antd'
+import {Button,Select,Table} from 'antd'
+import {Input, DatePicker} from 'antd'
 import moment from 'moment';
 import  Api from '../../utils/Api'
+import  AppData from '../../AppData'
 
 
+import './freebillmanager.less';
+
+const Option = Select.Option;
 const dateFormat = 'YYYY-MM-DD';
 const columns = [
     {
@@ -44,19 +48,29 @@ const columns = [
 ];
 
 
+let tbstyle={"marginLeft":"20px"}
+
+let queryinfo={
+    'department':'',
+    'others':'',
+    'status':'',
+    'type':0
+};
+
+
 class List extends React.Component {
     constructor(props) {
         super(props);
         // 设置 initial state
         this.state = {
             dataSource: [],
-            loading: false,
-            startDate: '2016-12-15',
-            endDate: '2016-12-29'
+            loading: false
         };
 
-        this.handleClick = this.handleClick.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.exportClick = this.exportClick.bind(this);
+        this.queryClick = this.queryClick.bind(this);
+        this.keywordChange = this.keywordChange.bind(this);
+        this.statusChange = this.statusChange.bind(this);
         this.getData = this.getData.bind(this);
     }
 
@@ -64,15 +78,25 @@ class List extends React.Component {
         this.getData();
     }
 
-    handleClick(e) {
+    queryClick() {
         this.setState({
             loading: true
         });
         this.getData();
     }
 
-    handleChange(e) {
-       console.log('be click');
+    keywordChange(e) {
+        let value = this.refs.keyword.refs.input.value;
+        queryinfo.others=value;
+
+    }
+
+    exportClick(e) {
+
+    }
+
+    statusChange(e) {
+
     }
 
     getData() {
@@ -81,18 +105,21 @@ class List extends React.Component {
             loading: true
         });
 
-
         var param = {
-            "startDate": "2016-01-01",
-            "endDate": "2016-12-29",
-            "type": 0,
+            "startDate": "2001-01-01",
+            "endDate": "2100-01-01",
+            "type": queryinfo.type,
+        /*    'department':queryinfo.department,*/
+            'others':queryinfo.others,
+            'status':queryinfo.status,
             "pager": {
                 "page": 1,
                 "rows": 50
             }
         };
+
         Api.post({
-            'url': 'doc/list?eid=4016572&appid=12345678&secret=8512f7fa',
+            'url': 'doc/list?'+AppData.getData().author,
             'param': param,
             'fnSuccess': function (data) {
                 that.setState({
@@ -105,15 +132,32 @@ class List extends React.Component {
 
     render() {
         return (
-            <div >
-                <Select size="large" defaultValue="lucy" style={{ width: 200 }} onChange={this.handleChange}>
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>Disabled</Option>
-                    <Option value="yiminghe">Yiminghe</Option>
-                </Select>
-                <Button type="ghost" onClick={this.handleClick}>导出</Button>
-                <Table dataSource={this.state.dataSource} columns={columns} loading={this.state.loading}/>
+            <div className="free-bill-manager">
+                <div className="head">
+                    <span>部门</span>
+                    <Select size="large" defaultValue="全部" style={{ width: 180,margin:"0 10px" }} onChange={this.handleChange}>
+                        <Option value="jack">全部</Option>
+
+                    </Select>
+                    <span>类型</span>
+                    <Select size="large" defaultValue="全部" style={{ width: 180,margin:"0 10px" }} onChange={this.handleChange}>
+                        <Option value="0">全部</Option>
+                        <Option value="1">日常报销单</Option>
+                        <Option value="2">差旅报销单</Option>
+
+                    </Select>
+                    <span>状态</span>
+                    <Select size="large" defaultValue="全部" style={{ width: 180,margin:"0 10px" }} onChange={this.statusChange}>
+                        <Option value="已支付">已支付</Option>
+                        <Option value="待支付">待支付</Option>
+                        <Option value="审核中">审核中</Option>
+                    </Select>
+                    <Input ref="keyword" style={{ width: 180,margin:"0 10px" }}
+                           onChange={this.keywordChange} onPressEnter={this.queryClick}  placeholder="请输入报销人/单号" />
+                    <Button type="ghost" onClick={this.queryClick}>查询</Button>
+                    <Button type="ghost" onClick={this.exportClick}>导出</Button>
+                </div>
+                <Table style={tbstyle} dataSource={this.state.dataSource} columns={columns} loading={this.state.loading}/>
             </div>
         )
     }
