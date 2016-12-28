@@ -11,7 +11,21 @@ import './freebillmanager.less';
 
 const Option = Select.Option;
 const dateFormat = 'YYYY-MM-DD';
+
+function beclick(text) {
+    alert(JSON.stringify(text));
+}
+
 const columns = [
+    {
+        title: '操作',
+        key: 'action',
+        render: (text, record) => (
+            <span>
+                <a  onClick={beclick.bind(this,text)}>{text.status}</a>
+            </span>
+        ),
+    },
     {
         title: '日期 ',
         dataIndex: 'time'
@@ -37,16 +51,30 @@ const columns = [
     }, {
         title: '单据编号 ',
         dataIndex: 'id',
-        key: 'id'
+
     }, {
         title: '状态 ',
-        dataIndex: 'statusCode'
+        dataIndex: 'status'
     }, {
         title: '付款时间 ',
         dataIndex: 'payTime'
     }
 ];
 
+const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    },
+    onSelect: (record, selected, selectedRows) => {
+        console.log(record, selected, selectedRows);
+    },
+    onSelectAll: (selected, selectedRows, changeRows) => {
+        console.log(selected, selectedRows, changeRows);
+    },
+    getCheckboxProps: record => ({
+        disabled: record.name === 'Disabled User',    // Column configuration not to be checked
+    }),
+};
 
 let tbstyle={"marginLeft":"20px"}
 
@@ -66,6 +94,9 @@ class List extends React.Component {
             dataSource: [],
             loading: false
         };
+
+        this.editSource = this.editSource.bind(this);
+
 
         this.exportClick = this.exportClick.bind(this);
         this.queryClick = this.queryClick.bind(this);
@@ -95,6 +126,10 @@ class List extends React.Component {
 
     }
 
+    editSource(e) {
+
+    }
+
     statusChange(e) {
 
     }
@@ -118,10 +153,12 @@ class List extends React.Component {
             }
         };
 
+
         Api.post({
             'url': 'doc/list?'+AppData.getData().author,
             'param': param,
             'fnSuccess': function (data) {
+                console.log(JSON.stringify(data));
                 that.setState({
                     loading: false,
                     dataSource: data
@@ -157,7 +194,7 @@ class List extends React.Component {
                     <Button type="ghost" onClick={this.queryClick}>查询</Button>
                     <Button type="ghost" onClick={this.exportClick}>导出</Button>
                 </div>
-                <Table style={tbstyle} dataSource={this.state.dataSource} columns={columns} loading={this.state.loading}/>
+                <Table rowKey="id" style={tbstyle} rowSelection={rowSelection}  dataSource={this.state.dataSource} columns={columns} loading={this.state.loading}/>
             </div>
         )
     }
