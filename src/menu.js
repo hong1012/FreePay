@@ -19,7 +19,7 @@ export default React.createClass({
         return (
             <Router history={hashHistory}>
                 <Route path="/" component={App}>
-                    <IndexRoute component={TestApi}/>
+                    <IndexRoute component={FreeBillManager}/>
                     <Route path="/repos" component={Repos}/>
                     <Route path="/about" component={About}/>
                     <Route path="/chart" component={Chart}/>
