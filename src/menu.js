@@ -2,7 +2,7 @@ import React from 'react'
 import {Router, Route, hashHistory, IndexRoute} from 'react-router'
 
 import App from './App'
-import FreeBillManager from './modules/FreeBillManager/List'
+import FreeBillManager from './modules/FreeBillManager/BillManager'
 import FreeBillProgress from './modules/FreeBillProgress/List'
 import CostPay from './modules/CostPay/List'
 import CostForm from './modules/CostForm/List'

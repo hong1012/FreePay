@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Button,Table} from 'antd'
+import {Button, Table} from 'antd'
 import  AppData from '../../AppData'
 
 const dateFormat = 'YYYY-MM-DD';
@@ -51,15 +51,15 @@ class List extends React.Component {
          this.setState({
          loading: true
          });
-        Api.get({
-            'url': 'consumption/type?eid=4016572&appid=12345678&secret=8512f7fa',
-            'fnSuccess': function (data) {
-                that.setState({
-                    loading: false,
-                    dataSource: data
-                });
-            }
-        });*/
+         Api.get({
+         'url': 'consumption/type?eid=4016572&appid=12345678&secret=8512f7fa',
+         'fnSuccess': function (data) {
+         that.setState({
+         loading: false,
+         dataSource: data
+         });
+         }
+         });*/
     }
 
     render() {
