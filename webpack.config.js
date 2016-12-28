@@ -1,12 +1,14 @@
 //webpack.config.js
 var webpack = require('webpack');//引入Webpack模块供我们调用，这里只能使用ES5语法，使用ES6语法会报错
 
+
 module.exports = {
     devtool: 'eval-source-map',//生成Source Maps,这里选择eval-source-map
+    //devtool: false,//生成Source Maps,这里选择eval-source-map
     entry: ['webpack/hot/dev-server', __dirname + '/src/main.js'],//唯一入口文件,__dirname是node.js中的一个全局变量，它指向当前执行脚本所在的目录
     output: {//输出目录
         path: __dirname + '/build',//打包后的js文件存放的地方
-        filename: 'bundle.js'//打包后输出的js的文件名
+        filename: 'app.js'//打包后输出的js的文件名
     },
 
     module: {
@@ -46,8 +48,14 @@ module.exports = {
         //提供全局的变量，在模块中使用无需用require引入
         new webpack.ProvidePlugin({
             _: "underscore",
-            $: "jquery"
+    /*        $: "jquery"*/
         }),
+        //压缩
+/*        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })*/
     ],
 
     //webpack-dev-server配置

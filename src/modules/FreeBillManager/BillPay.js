@@ -19,7 +19,8 @@ class View extends React.Component {
 
 
     closeClick() {
-        $('#appview').hide();
+        var domView=document.getElementById('appview');
+        domView.style.display='none';
     }
 
     printClick() {

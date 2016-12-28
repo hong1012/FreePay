@@ -14,12 +14,12 @@ class View extends React.Component {
         this.closeClick = this.closeClick.bind(this);
         this.printClick = this.printClick.bind(this);
 
-
     }
 
 
     closeClick() {
-        $('#appview').hide();
+        var domView=document.getElementById('appview');
+        domView.style.display='none';
     }
 
     printClick() {

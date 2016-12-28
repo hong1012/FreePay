@@ -21,8 +21,9 @@ const dateFormat = 'YYYY-MM-DD';
 
 function beclick(text) {
 
-    $('#appview').show();
+
     var domView=document.getElementById('appview');
+    domView.style.display='block';
 
     if(text.statusCode=='pass' || text.statusCode=='submit'){
         render((
@@ -199,7 +200,7 @@ class List extends React.Component {
             'url': 'doc/list?' + AppData.getData().author,
             'param': param,
             'fnSuccess': function (data) {
-                console.log(JSON.stringify(data));
+                //console.log(JSON.stringify(data));
                 that.setState({
                     loading: false,
                     dataSource: data
