@@ -6,17 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>云报销</title>
 </head>
+
+<style>
+
+
+    .appView {
+
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: #ffffff;
+
+    }
+
+
+</style>
+
 <body>
 <!--要插入React组件的位置-->
 <div id="app"></div>
 
-<div id="content"></div>
-
-<div id="content2"></div>
-
-<div id="content3"></div>
-
-<div id="content4"></div>
+<div class="appView" id="appview" style="display: none"></div>
 
 <!--引入bundle.js-->
 <script src="bundle.js"></script>
