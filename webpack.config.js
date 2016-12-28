@@ -42,7 +42,12 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin()//热模块替换插件
+        new webpack.HotModuleReplacementPlugin(),//热模块替换插件
+        //提供全局的变量，在模块中使用无需用require引入
+        new webpack.ProvidePlugin({
+            _: "underscore",
+            $: "jquery"
+        }),
     ],
 
     //webpack-dev-server配置
@@ -58,10 +63,14 @@ module.exports = {
             '/thirdapi/*': {
                 target: 'http://ebx.youshang.com/',
                 secure: false
+            },
+            '/api/*': {
+                target: 'http://ebx.youshang.com/',
+                secure: false
             }
         }
     }
 
-    
+
 
 };

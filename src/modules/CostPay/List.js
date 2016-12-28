@@ -58,7 +58,7 @@ class List extends React.Component {
                                value={this.state.text}/>
                         <button onClick={this.handleClick}>{this.state.name}</button>
                         <button onClick={this.handleGet}>获取数据</button>
-                        <ul style={{'display':this.state.show}}>
+                        <ul style={{'display': this.state.show}}>
                             <li>深圳</li>
                             <li>广州</li>
                             <li>惠州</li>

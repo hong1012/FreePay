@@ -3,8 +3,6 @@
  */
 
 
-
-
 const baseUrl = 'http://localhost:8080/thirdapi/'
 //const baseUrl='http://ebx.youshang.com/thirdapi/'
 

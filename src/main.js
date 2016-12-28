@@ -4,6 +4,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import Menu  from './menu';
+import AppData from './AppData'
 
 import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
 
@@ -15,41 +16,8 @@ function showApp() {
 }
 
 
-/*
- ReactDom.render(
- <App name="app"/>,
- document.getElementById('content')
- );*/
+//showApp();
 
-
-//setInterval(function() {
-/*    ReactDom.render(
- <Cmp.list1  name="list1 component" date={new Date()}/>,
- document.getElementById('content3')
- );*/
-//}, 500);
-
-/*
-
- ReactDom.render(
- <Cmp.list2>
- <span>hello</span>
- <span>world</span>
- </Cmp.list2>,
- document.getElementById('content3')
- );
-
- ReactDom.render(
- <Test  name="显示"/>,
- document.getElementById('content2')
- );
-
- */
-
-/*
- ReactDom.render(
- <TestFilter  />,
- document.getElementById('content4')
- );*/
+AppData.initApp(showApp);
 
 

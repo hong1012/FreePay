@@ -1,9 +1,7 @@
 import React from 'react'
 
-import {Button} from 'antd'
-import {Input, Table, DatePicker} from 'antd'
-import moment from 'moment';
-import  Api from '../../utils/Api'
+import {Button,Table} from 'antd'
+import  AppData from '../../AppData'
 
 const dateFormat = 'YYYY-MM-DD';
 const columns = [
@@ -40,11 +38,19 @@ class List extends React.Component {
         this.getData();
     }
 
+
     getData() {
-        var that = this;
+
         this.setState({
-            loading: true
+            loading: false,
+            dataSource: AppData.getData().feeList
         });
+
+        /*
+         var that = this;
+         this.setState({
+         loading: true
+         });
         Api.get({
             'url': 'consumption/type?eid=4016572&appid=12345678&secret=8512f7fa',
             'fnSuccess': function (data) {
@@ -53,7 +59,7 @@ class List extends React.Component {
                     dataSource: data
                 });
             }
-        });
+        });*/
     }
 
     render() {

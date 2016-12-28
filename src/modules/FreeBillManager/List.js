@@ -52,10 +52,11 @@ class List extends React.Component {
             dataSource: [],
             loading: false,
             startDate: '2016-12-15',
-            endDate: '2016-12-23'
+            endDate: '2016-12-29'
         };
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.getData = this.getData.bind(this);
     }
 
@@ -70,6 +71,10 @@ class List extends React.Component {
         this.getData();
     }
 
+    handleChange(e) {
+       console.log('be click');
+    }
+
     getData() {
         var that = this;
         this.setState({
@@ -79,7 +84,7 @@ class List extends React.Component {
 
         var param = {
             "startDate": "2016-01-01",
-            "endDate": "2016-12-26",
+            "endDate": "2016-12-29",
             "type": 0,
             "pager": {
                 "page": 1,
@@ -101,6 +106,12 @@ class List extends React.Component {
     render() {
         return (
             <div >
+                <Select size="large" defaultValue="lucy" style={{ width: 200 }} onChange={this.handleChange}>
+                    <Option value="jack">Jack</Option>
+                    <Option value="lucy">Lucy</Option>
+                    <Option value="disabled" disabled>Disabled</Option>
+                    <Option value="yiminghe">Yiminghe</Option>
+                </Select>
                 <Button type="ghost" onClick={this.handleClick}>导出</Button>
                 <Table dataSource={this.state.dataSource} columns={columns} loading={this.state.loading}/>
             </div>

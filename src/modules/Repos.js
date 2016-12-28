@@ -126,7 +126,7 @@ class Test extends React.Component {
     render() {
         return (
             <div className="About">
-                <DatePicker style={{'margin':'0 15px'}} onChange={this.onChange1}
+                <DatePicker style={{'margin': '0 15px'}} onChange={this.onChange1}
                             defaultValue={moment(this.state.startDate, dateFormat)}/>
                 <DatePicker onChange={this.onChange2} defaultValue={moment(this.state.endDate, dateFormat)}/>
                 <Button type="ghost" className="btn" onClick={this.handleClick}>查询</Button>

@@ -62,7 +62,7 @@ class myChart extends React.Component {
 
     render() {
         return (
-            <div id="mychart" style={{"height":"300px"}}>
+            <div id="mychart" style={{"height": "300px"}}>
                 chart
             </div>
         )
