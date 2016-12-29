@@ -20,8 +20,6 @@ const Option = Select.Option;
 
 
 
-
-
 function beclick(text) {
 
 
@@ -228,7 +226,6 @@ class List extends React.Component {
                         <Option value="0">全部</Option>
                         <Option value="1">日常报销单</Option>
                         <Option value="2">差旅报销单</Option>
-
                     </Select>
                     <span>状态</span>
                     <Select size="large" defaultValue="全部" style={{width: 180, margin: "0 10px"}}

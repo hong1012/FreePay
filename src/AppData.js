@@ -6,8 +6,6 @@
 import  Api from './utils/Api'
 
 
-
-
 const baseUrl = 'http://localhost:8080/'
 //const baseUrl='http://ebx.youshang.com/'
 
@@ -70,6 +68,14 @@ function getParam(fnCall) {
     });
 }
 
+/*function getFee(list,keyid) {
+    var len=list.length;
+    for(var i=0;i<len;i++){
+        //list[i]=get
+    }
+
+    return list;
+}*/
 
 function  initApp(fnCall) {
 

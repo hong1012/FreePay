@@ -10,6 +10,8 @@ const Step = Steps.Step;
 import  Api from '../../utils/Api'
 import  AppData from '../../AppData'
 
+import './billview.less'
+
 
 
 let tbstyle = {"marginLeft": "20px"}
@@ -41,7 +43,6 @@ const columns = [
 ];
 
 
-
 class View extends React.Component {
 
     constructor(props) {
@@ -51,6 +52,12 @@ class View extends React.Component {
         this.printClick = this.printClick.bind(this);
 
         this.getData(this.props.id);
+
+        this.state={
+            dataSource: {},
+            tbdata:[],
+            loading:false
+        };
 
     }
 
@@ -65,26 +72,43 @@ class View extends React.Component {
     }
 
 
-    getData(id) {
+    gettbdata(list){
+        //let feeList=AppData.getFee(list);
 
+
+    }
+
+    getData(id) {
+        var that=this;
         Api.get({
             'url': 'doc?' + AppData.getData().author+'&id='+id,
 
             'fnSuccess': function (data) {
-                console.log(JSON.stringify(data));
-
+                //console.log(JSON.stringify(data));
+                let tbdata=that.gettbdata(data.consumptions);
+                that.setState({
+                    //tbdata:tbdata,
+                    dataSource:data
+                });
             }
         });
     }
 
 
+
+
     render() {
+
+        let ds=this.state.dataSource;
+
         return (
 
-            <div>
-                <div>
-                    <Button type="ghost" onClick={this.closeClick}>关闭</Button>
-                    <Button type="ghost" onClick={this.printClick}>打印</Button>
+            <div className="billview">
+
+                <div style={{margin: 20}}>
+                    <span>报销单进度</span>
+                    <Button className="print" type="ghost" onClick={this.printClick}>打印</Button>
+                    <Button className="close"  type="ghost" onClick={this.closeClick}>关闭</Button>
                 </div>
 
                 <Steps current={1}>
@@ -95,12 +119,12 @@ class View extends React.Component {
 
 
                 <div>
-                    <p><span>日期:</span><span>日常报销单:</span><span>报销人:</span></p>
-                    <p><span>事由:</span></p>
-                    <p><span>备注:</span></p>
+                    <p><span>日期:{ds.time}</span><span>类型:{ds.type}</span><span>报销人:{ds.name}</span></p>
+                    <p><span>事由:{ds.reason}</span></p>
+                    <p><span>备注:{ds.desc}</span></p>
                 </div>
 
-                <Table bordered rowKey="id" style={tbstyle} dataSource={[]}
+                <Table bordered rowKey="id" style={tbstyle} dataSource={this.state.tbdata}
                        columns={columns} />
 
                 <div>
