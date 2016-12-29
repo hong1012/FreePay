@@ -63,10 +63,11 @@ class List extends React.Component {
     }
 
     render() {
+        var bpage=false;
         return (
             <div >
                 <Button type="ghost" onClick={this.handleClick}>新增</Button>
-                <Table dataSource={this.state.dataSource} columns={columns} loading={this.state.loading}/>
+                <Table pagination={bpage}  dataSource={this.state.dataSource} columns={columns} loading={this.state.loading}/>
             </div>
         )
     }

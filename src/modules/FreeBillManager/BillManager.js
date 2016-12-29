@@ -4,8 +4,11 @@ import {render} from 'react-dom';
 import {Button, Select, Table} from 'antd'
 import {Input, DatePicker} from 'antd'
 import moment from 'moment';
+
 import  Api from '../../utils/Api'
 import  AppData from '../../AppData'
+
+
 import  BillView from './BillView'
 import  BillPay from './BillPay'
 import  BillCheck from './BillCheck'
@@ -14,7 +17,7 @@ import  BillCheck from './BillCheck'
 import './freebillmanager.less';
 
 const Option = Select.Option;
-const dateFormat = 'YYYY-MM-DD';
+
 
 
 
@@ -37,7 +40,7 @@ function beclick(text) {
     }
     else if(text.statusCode=='pay'){
         render((
-            <BillView/>
+            <BillView {...text} />
         ), domView);
     }
 }
